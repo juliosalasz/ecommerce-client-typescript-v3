@@ -13,16 +13,23 @@
 }
 
 .navContainer {
+  color: white;
   max-width: 1180px;
   padding: 20px 40px;
   margin: 10px auto;
-  background-color: #f1f1f1;
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: space-between;
   border-radius: 25px;
+}
+.scrollY {
+  color: black !important;
+  background-color: #f1f1f1;
   box-shadow: 1px 19px 20px -6px rgba(0, 0, 0, 0.13);
+}
+.scrollY a {
+  color: black !important;
 }
 .navContainer ul {
   display: flex;
@@ -35,6 +42,13 @@
 .navContainer li {
   margin: 0 16px;
   font-weight: 600;
+}
+.navContainer li a {
+  color: white;
+  text-decoration: none;
+}
+.navContainer li a:hover {
+  text-decoration: underline;
 }
 
 .CartIcon {

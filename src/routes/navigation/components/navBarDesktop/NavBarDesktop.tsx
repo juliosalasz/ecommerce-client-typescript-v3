@@ -1,13 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useScrollPostion } from "../../../../hooks/useScrollPosition";
 
 import "./navBarDesktop.css";
 
 const NavBarDesktop = () => {
+  const scrollPosition = useScrollPostion();
   return (
     <nav className="navBar">
-      <div className="navContainer">
+      <div
+        className={`${scrollPosition > 0 ? "scrollY" : "null"} navContainer`}
+      >
         <h1>TECHItOut</h1>
         <ul>
           <li>
