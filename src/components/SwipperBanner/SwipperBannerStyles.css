@@ -1,0 +1,42 @@
+.swiper-pagination-fraction,
+.swiper-pagination-custom {
+  bottom: unset !important;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets {
+  bottom: 10px;
+  left: 45% !important;
+  width: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  top: unset !important;
+  bottom: 15px;
+}
+.swiper-button-prev {
+  left: 10px !important;
+}
+
+.swiper-button-next {
+  right: unset;
+  left: 70px !important;
+}
+
+.swipperContainer {
+  overflow: hidden;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.colL {
+  grid-column: span 1;
+}
+.swipperSize {
+  display: flex;
+  grid-column: span 2;
+
+  position: relative;
+  right: 0;
+}

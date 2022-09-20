@@ -1,0 +1,35 @@
+.swiper-pagination-fraction,
+.swiper-pagination-custom {
+  bottom: 10px !important;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets {
+  bottom: 10px;
+  left: 45% !important;
+  width: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white !important;
+  top: unset !important;
+  bottom: 15px;
+}
+.swiper-button-prev {
+  left: 10px !important;
+}
+
+.swiper-button-next {
+  right: unset;
+  left: 70px !important;
+}
+
+.swipperContainerMobile {
+  overflow: hidden;
+  width: 100%;
+}
+.swipperSizeMobile {
+  display: flex;
+  position: relative;
+  right: 0;
+}
