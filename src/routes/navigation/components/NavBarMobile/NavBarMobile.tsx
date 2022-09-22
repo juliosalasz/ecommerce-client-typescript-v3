@@ -54,7 +54,7 @@ const NavBarMobile = () => {
             </Link>
           </li>
           <li>
-            <Link to="/sign-in" onClick={hamburgerBtnHandler}>
+            <Link to="/signin" onClick={hamburgerBtnHandler}>
               Sign In
             </Link>
           </li>

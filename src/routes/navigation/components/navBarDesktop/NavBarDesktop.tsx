@@ -21,7 +21,7 @@ const NavBarDesktop = () => {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/sign-in">Sign In</Link>
+            <Link to="/signin">Sign In</Link>
           </li>
 
           <li>
