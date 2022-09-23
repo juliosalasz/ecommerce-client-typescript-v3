@@ -8,7 +8,7 @@ interface IUser {
   createdAt?: Date;
 }
 
-export const getUsers = async (userEmail: string) => {
+export const getUserFromServer = async (userEmail: string) => {
   try {
     const { data } = await Axios.get(
       "https://tech-ecommerce-server.herokuapp.com/user/getUser",
@@ -22,6 +22,7 @@ export const getUsers = async (userEmail: string) => {
   }
 };
 
+//Server checks if user already exists
 export const createUserFromAuth = async (user: IUser) => {
   try {
     await Axios.post(

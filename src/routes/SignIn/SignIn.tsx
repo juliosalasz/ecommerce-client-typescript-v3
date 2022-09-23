@@ -1,26 +1,31 @@
-import { signInWithGooglePopup } from "../../utils/firebaseUtils/firebaseUtils";
-import { createUserFromAuth } from "../../api/Api";
+import SignInForm from "./SignInForm/SignInForm";
+import SignUpForm from "./SignUpForm/SignUpForm";
+
+import { useState } from "react";
+// import { useLocation } from "react-router-dom";
+
+import "./SignInStyles.css";
 const SignIn = () => {
-  const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    const user = {
-      name: response.user.displayName,
-      email: response.user.email,
-    };
-    const usercreated = await createUserFromAuth(user);
-    console.log(usercreated);
+  //Sign In or Sign up tab
+  const [signinOrUp, setSignInOrUp] = useState<boolean>(true);
+  const inOrUpHandler = () => {
+    setSignInOrUp(!signinOrUp);
   };
+
+  // const received = useLocation().state;
+
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>Sign In Page</h1>
-      <button onClick={logGoogleUser}>Sign In With Google</button>
-    </div>
+    <section id="SignIn" className="signBody">
+      <div className="logwrapper">
+        <div className="signInWrapper">
+          {signinOrUp ? (
+            <SignInForm signInOrUpHandler={inOrUpHandler} />
+          ) : (
+            <SignUpForm signInOrUpHandler={inOrUpHandler} />
+          )}
+        </div>
+      </div>
+    </section>
   );
 };
 
