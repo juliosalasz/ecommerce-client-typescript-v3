@@ -1,8 +1,16 @@
 import "./ButtonStyles.css";
+import { FC } from "react";
 
 import { ButtonSpinner } from "./buttonStyles";
 
 //types for choosing with button you want
+type ButtonProps = {
+  children: JSX.Element | JSX.Element[];
+  buttonType: string;
+  isLoading?: boolean;
+  onClick: () => Promise<void>;
+  type?: "submit" | "reset" | "button";
+};
 const BUTTON_TYPE_CLASSES = {
   google: "googlebtn",
   signUpLink: "btnChange",
@@ -13,10 +21,15 @@ const BUTTON_TYPE_CLASSES = {
 };
 
 //function will use buttonType as the data for choosing with type of button you want
-const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  buttonType,
+  isLoading,
+  ...otherProps
+}) => {
   return (
     <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      className={`button-container ${buttonType}`}
       disabled={isLoading}
       {...otherProps}
     >

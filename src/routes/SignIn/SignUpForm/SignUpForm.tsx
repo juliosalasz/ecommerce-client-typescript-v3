@@ -40,7 +40,7 @@ const SignUpForm = (props: StateProps) => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLDivElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     //password must be check if equal to confirm password
@@ -73,10 +73,10 @@ const SignUpForm = (props: StateProps) => {
 
   return (
     <Fragment>
-      <div className="signUp" onSubmit={handleSubmit}>
+      <div className="signUp">
         <h2>SignUp</h2>
         {!errorMessage ? null : errorMessage}
-        <form className="signUpForm">
+        <form className="signUpForm" onSubmit={handleSubmit}>
           <FormInput
             onIcon={faUser}
             placeholder="Name"

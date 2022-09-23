@@ -1,10 +1,14 @@
-import { signInWithGooglePopup } from "../../../utils/firebaseUtils/firebaseUtils";
+import {
+  signInWithGooglePopup,
+  signInAuthUserWithEmailAndPassword,
+} from "../../../utils/firebaseUtils/firebaseUtils";
 import { createUserFromAuth } from "../../../api/Api";
 import { StateProps } from "../../../types/SignInOrUpType";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import FormInput from "../../../components/FormInput/FormInput";
+import Button from "../../../components/Button/Button";
 
 import { Fragment, useState } from "react";
 
@@ -22,6 +26,12 @@ const SignInForm = (props: StateProps) => {
   };
   const [formFields, setFormFields] =
     useState<DefaultFromFields>(defaultFormFields);
+
+  const { email, password } = formFields;
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
 
   const changeSignHandler = () => {
     props.signInOrUpHandler();
@@ -41,6 +51,30 @@ const SignInForm = (props: StateProps) => {
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
+  };
+
+  //for sending the data to the log in a new user
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    //send user to server
+    try {
+      signInAuthUserWithEmailAndPassword(email, password);
+      //Will reset the form
+      resetFormFields();
+    } catch (error: any) {
+      //For types of errors
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("Incorrect Password For Email");
+          break;
+        case "auth/user-not-found":
+          alert("No user Associated with this email");
+          break;
+        default:
+          console.log("User login encountered an error", error);
+      }
+    }
   };
 
   return (
@@ -78,9 +112,10 @@ const SignInForm = (props: StateProps) => {
       </div>
 
       <div className="googleSignIne">
-        <button type="button" onClick={logGoogleUser}>
-          <FontAwesomeIcon icon={faGoogle} /> <p>Sign In with google</p>
-        </button>
+        <Button type="button" buttonType="googlebtn" onClick={logGoogleUser}>
+          <FontAwesomeIcon icon={faGoogle} />
+          <p>Sign In with google</p>
+        </Button>
       </div>
       <div className="signUpLink">
         Not a member?
