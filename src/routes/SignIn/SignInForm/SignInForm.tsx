@@ -27,6 +27,8 @@ const SignInForm = (props: StateProps) => {
   const [formFields, setFormFields] =
     useState<DefaultFromFields>(defaultFormFields);
 
+  const [errorMessage, setErrorMessage] = useState<string>();
+
   const { email, password } = formFields;
 
   const resetFormFields = () => {
@@ -59,17 +61,21 @@ const SignInForm = (props: StateProps) => {
 
     //send user to server
     try {
-      signInAuthUserWithEmailAndPassword(email, password);
+      const response = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      console.log(response);
       //Will reset the form
       resetFormFields();
     } catch (error: any) {
       //For types of errors
       switch (error.code) {
         case "auth/wrong-password":
-          alert("Incorrect Password For Email");
+          setErrorMessage("Incorrect Password For Email");
           break;
         case "auth/user-not-found":
-          alert("No user Associated with this email");
+          setErrorMessage("No user Associated with this email");
           break;
         default:
           console.log("User login encountered an error", error);
@@ -79,6 +85,8 @@ const SignInForm = (props: StateProps) => {
 
   return (
     <Fragment>
+      <h2>LOG IN</h2>
+      {!errorMessage ? null : errorMessage}
       <div className="signIn">
         <form onSubmit={handleSubmit} className="signInForm">
           <FormInput
@@ -102,13 +110,8 @@ const SignInForm = (props: StateProps) => {
             value={password}
           />
 
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
-      </div>
-      <button onClick={logGoogleUser}>Click Here</button>
-      <div className="signUpLink">
-        Not a member?
-        <button onClick={changeSignHandler}>Sign Up</button>
       </div>
 
       <div className="googleSignIne">
@@ -119,7 +122,9 @@ const SignInForm = (props: StateProps) => {
       </div>
       <div className="signUpLink">
         Not a member?
-        <button onClick={changeSignHandler}>Sign Up</button>
+        <Button type="button" onClick={changeSignHandler} className="btnChange">
+          Sign Up
+        </Button>
       </div>
     </Fragment>
   );

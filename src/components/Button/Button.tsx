@@ -1,15 +1,16 @@
 import "./ButtonStyles.css";
 import { FC } from "react";
 
-import { ButtonSpinner } from "./buttonStyles";
+// import { ButtonSpinner } from "./buttonStyles";
 
 //types for choosing with button you want
 type ButtonProps = {
-  children: JSX.Element | JSX.Element[];
-  buttonType: string;
+  children?: JSX.Element | JSX.Element[] | string;
+  buttonType?: string;
   isLoading?: boolean;
-  onClick: () => Promise<void>;
+  onClick?: (() => Promise<void>) | (() => void);
   type?: "submit" | "reset" | "button";
+  className?: string;
 };
 const BUTTON_TYPE_CLASSES = {
   google: "googlebtn",
@@ -33,7 +34,8 @@ const Button: FC<ButtonProps> = ({
       disabled={isLoading}
       {...otherProps}
     >
-      {isLoading ? <ButtonSpinner /> : children}
+      {/* {isLoading ? <ButtonSpinner /> : children} */}
+      {children}
     </button>
   );
 };

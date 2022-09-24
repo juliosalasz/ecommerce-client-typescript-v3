@@ -117,14 +117,14 @@ const SignUpForm = (props: StateProps) => {
             onChange={handleChange}
             value={confirmPassword}
           />
-          <button type="submit">Submit</button>
+          <Button type="submit">Submit</Button>
         </form>
       </div>
       <div className="signUpLink">
         Already a member?
-        <button className="btnChange" onClick={props.signInOrUpHandler}>
+        <Button className="btnChange" onClick={props.signInOrUpHandler}>
           Log In
-        </button>
+        </Button>
       </div>
     </Fragment>
   );
