@@ -3,10 +3,19 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useScrollPostion } from "../../../../hooks/useScrollPosition";
 
+import { UserContextInterface } from "../../../../context/userContext";
+
 import "./navBarDesktop.css";
 
-const NavBarDesktop = () => {
+type onCLickProps = {
+  signOut: () => Promise<void>;
+};
+
+type NavProps = UserContextInterface & onCLickProps;
+
+const NavBarDesktop = (props: NavProps) => {
   const scrollPosition = useScrollPostion();
+
   return (
     <nav className="navBar">
       <div
@@ -21,7 +30,13 @@ const NavBarDesktop = () => {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
-            <Link to="/signin">Sign In</Link>
+            {props.currentUser ? (
+              <span className="navLink" onClick={props.signOut}>
+                Sign Out
+              </span>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
           </li>
 
           <li>

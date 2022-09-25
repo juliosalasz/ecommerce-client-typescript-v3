@@ -1,5 +1,8 @@
 import Axios from "axios";
 
+//Url
+export const ServerUrl = "https://tech-ecommerce-server.herokuapp.com/";
+
 //Users
 
 interface IUser {
@@ -10,10 +13,7 @@ interface IUser {
 
 export const getUserFromServer = async (userEmail: string) => {
   try {
-    const { data } = await Axios.get(
-      "https://tech-ecommerce-server.herokuapp.com/user/getUser",
-      {}
-    );
+    const { data } = await Axios.get(`${ServerUrl}user/getUser`, {});
     //datafilter should give me the name from the account
     const dataFilter = data.find((data: IUser) => data.email === userEmail);
     return dataFilter;
@@ -25,13 +25,10 @@ export const getUserFromServer = async (userEmail: string) => {
 //Server checks if user already exists
 export const createUserFromAuth = async (user: IUser) => {
   try {
-    await Axios.post(
-      "https://tech-ecommerce-server.herokuapp.com/user/postUser",
-      {
-        name: user.name,
-        email: user.email,
-      }
-    );
+    await Axios.post(`${ServerUrl}user/postUser`, {
+      name: user.name,
+      email: user.email,
+    });
     const userAuth = {
       name: user.name,
       email: user.email,
@@ -48,10 +45,7 @@ export const getProducts = async () => {
   try {
     const productServer = await Axios.get(
       "https://tech-ecommerce-server.herokuapp.com/products/getProducts"
-    )
-      .then((res) => res.data)
-      .then((res) => console.log("this worked"));
-
+    ).then((res) => res.data);
     return productServer;
   } catch (err) {
     console.log(err);

@@ -31,6 +31,8 @@ const SignInForm = (props: StateProps) => {
 
   const { email, password } = formFields;
 
+  //functions
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
@@ -46,6 +48,7 @@ const SignInForm = (props: StateProps) => {
       email: response.user.email,
     };
     const usercreated = await createUserFromAuth(user);
+
     console.log(usercreated);
   };
 
@@ -65,7 +68,8 @@ const SignInForm = (props: StateProps) => {
         email,
         password
       );
-      console.log(response);
+      if (!response) return;
+
       //Will reset the form
       resetFormFields();
     } catch (error: any) {

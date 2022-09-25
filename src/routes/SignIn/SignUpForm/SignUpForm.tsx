@@ -54,8 +54,10 @@ const SignUpForm = (props: StateProps) => {
         email,
         password
       );
-      //Send to server
+
       if (!response?.user) return setErrorMessage("Authentication Failed");
+
+      //Send to server
       const userToServer = {
         name: name,
         email: response?.user.email,

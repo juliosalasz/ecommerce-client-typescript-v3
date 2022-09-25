@@ -10,7 +10,15 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
-const NavBarMobile = () => {
+import { UserContextInterface } from "../../../../context/userContext";
+
+type onCLickProps = {
+  signOut: () => Promise<void>;
+};
+
+type NavProps = UserContextInterface & onCLickProps;
+
+const NavBarMobile = (props: NavProps) => {
   //Responsive Hamburger
   const [hamburgerActive, setHamburgerActive] = useState(false);
   const hamburgerBtnHandler = () => {
@@ -54,9 +62,13 @@ const NavBarMobile = () => {
             </Link>
           </li>
           <li>
-            <Link to="/signin" onClick={hamburgerBtnHandler}>
-              Sign In
-            </Link>
+            {props.currentUser ? (
+              <span className="navLink" onClick={props.signOut}>
+                Sign Out
+              </span>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
           </li>
         </animated.ul>
       ) : null}

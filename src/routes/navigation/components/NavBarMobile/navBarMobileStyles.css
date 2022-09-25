@@ -95,3 +95,11 @@
   color: white;
   font-size: 30px;
 }
+
+.navLink {
+  cursor: pointer;
+}
+
+.navLink :hover {
+  text-decoration: underline;
+}
