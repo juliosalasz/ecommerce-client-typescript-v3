@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useScrollPostion } from "../../../../hooks/useScrollPosition";
 
+import CartIcon from "../../../../components/CartIcon/CartIcon";
 import { UserContextInterface } from "../../../../context/userContext";
 
 import "./navBarDesktop.css";
@@ -40,12 +39,7 @@ const NavBarDesktop = (props: NavProps) => {
           </li>
 
           <li>
-            <div className="CartIcon">
-              <FontAwesomeIcon icon={faShoppingCart} />
-              <div className="CartNumber">
-                <p>0</p>
-              </div>
-            </div>
+            <CartIcon />
           </li>
         </ul>
       </div>

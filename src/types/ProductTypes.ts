@@ -21,3 +21,12 @@ export type Category = {
   POPULAR: boolean;
   imageUrl?: string;
 };
+
+export type ProductToBeAdded = {
+  sku: string | undefined;
+  name: string | undefined;
+  imageUrl: string | undefined;
+  price: Number | undefined;
+  feature: string | undefined;
+  quantity: number;
+};

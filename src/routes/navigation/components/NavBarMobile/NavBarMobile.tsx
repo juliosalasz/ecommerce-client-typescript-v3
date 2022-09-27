@@ -1,9 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faShoppingCart,
-  faBars,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./navBarMobileStyles.css";
 
 import { useState } from "react";
@@ -11,6 +7,8 @@ import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
 import { UserContextInterface } from "../../../../context/userContext";
+
+import CartIcon from "../../../../components/CartIcon/CartIcon";
 
 type onCLickProps = {
   signOut: () => Promise<void>;
@@ -34,12 +32,7 @@ const NavBarMobile = (props: NavProps) => {
     <nav className="navBarMobile">
       <div className="navContainerMobile">
         <h1>TECHItOut</h1>
-        <div className="CartIconMobile">
-          <FontAwesomeIcon icon={faShoppingCart} />
-          <div className="CartNumberMobile">
-            <p>0</p>
-          </div>
-        </div>
+        <CartIcon />
 
         <button className="hamburger" onClick={hamburgerBtnHandler}>
           {hamburgerActive ? (
@@ -67,7 +60,9 @@ const NavBarMobile = (props: NavProps) => {
                 Sign Out
               </span>
             ) : (
-              <Link to="/signin">Sign In</Link>
+              <Link to="/signin" onClick={hamburgerBtnHandler}>
+                Sign In
+              </Link>
             )}
           </li>
         </animated.ul>

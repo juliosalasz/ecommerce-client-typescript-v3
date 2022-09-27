@@ -1,9 +1,9 @@
-import { Category } from "../../types/ProductTypes";
 import Button from "../../components/Button/Button";
+import { ProductContext } from "../../context/ProductContext";
+import { CartContext } from "../../context/CartContext";
 
 import { useLocation } from "react-router-dom";
-
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import useScreenType from "react-screentype-hook";
 
 import {
@@ -20,21 +20,8 @@ import "./productPageStyles.css";
 
 const ProductPage = () => {
   const screenType = useScreenType();
-
-  //fetch json
-  const [products, setProducts] = useState<Category[]>();
-  useEffect(() => {
-    const fetchData = async () => {
-      const dataFetch = await fetch(
-        "https://tech-ecommerce-server.herokuapp.com/products/getProducts"
-      )
-        .then((response: Response) => response.json())
-        .then((res: Category[]) => setProducts(res))
-        .catch((err: Error) => console.log(err));
-      return dataFetch;
-    };
-    fetchData();
-  }, []);
+  const { products } = useContext(ProductContext);
+  const { addItemToCart } = useContext(CartContext);
 
   //state for tab
   const [skuState, setSkuState] = useState(0);
@@ -63,6 +50,20 @@ const ProductPage = () => {
   const priceHandler = (i: number) => {
     setSkuState(i);
     setPrice(propObject?.skus[i].price);
+  };
+
+  //addProductToCart
+  const addProductToCart = () => {
+    const productToBeAdded = {
+      sku: propObject?.skus[skuState].sku,
+      name: propObject?.name,
+      imageUrl: propObject?.imageUrl,
+      price: propObject?.skus[skuState].price,
+      feature: propObject?.skus[skuState].feature,
+      quantity: 1,
+    };
+
+    addItemToCart(productToBeAdded);
   };
 
   return (
@@ -121,6 +122,7 @@ const ProductPage = () => {
               buttonType={`${
                 !screenType.isMobile ? "disabled" : "disabledCart"
               }`}
+              onClick={addProductToCart}
             >
               Add to cart
             </Button>
@@ -132,5 +134,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
-//{`$${price}`}

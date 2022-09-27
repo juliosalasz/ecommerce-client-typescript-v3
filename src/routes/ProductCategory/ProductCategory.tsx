@@ -1,9 +1,9 @@
-import { Category, Product } from "../../types/ProductTypes";
+import { useContext } from "react";
 import ShopCategoryBar from "../shop/ShopCategoryBar/ShopCategoryBar";
 
 import ItemCard from "../../components/ItemCard/ItemCard";
 
-import { useEffect, useState } from "react";
+import { ProductContext } from "../../context/ProductContext";
 import { useParams } from "react-router-dom";
 import useScreenType from "react-screentype-hook";
 
@@ -15,13 +15,7 @@ import {
 } from "./productCategoryStyles";
 
 const ProductCategory = () => {
-  const [products, setProducts] = useState<Category[]>();
-  useEffect(() => {
-    fetch("https://tech-ecommerce-server.herokuapp.com/products/getProducts")
-      .then((response: Response) => response.json())
-      .then((res: Category[]) => setProducts(res))
-      .catch((err: Error) => console.log(err));
-  }, []);
+  const { products } = useContext(ProductContext);
 
   //product filter
   const params = useParams();

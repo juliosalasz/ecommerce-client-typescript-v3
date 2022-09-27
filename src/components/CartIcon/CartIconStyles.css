@@ -1,0 +1,23 @@
+.CartIcon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.CartNumber {
+  margin-left: 10px;
+  padding: 0px;
+  width: 40px;
+  height: 26px;
+  border-radius: 25px;
+  background-color: #00ffa2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.CartNumber p {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-weight: 600;
+}

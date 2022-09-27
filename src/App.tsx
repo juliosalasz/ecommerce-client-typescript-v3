@@ -6,13 +6,19 @@ import Shop from "./routes/shop/Shop";
 import ProductCategory from "./routes/ProductCategory/ProductCategory";
 import ProductPage from "./routes/ProductPage/ProductPage";
 import SignIn from "./routes/SignIn/SignIn";
+import CartModal from "./components/CartModal/CartModal";
 import ErrorPage from "./routes/ErrorPage/ErrorPage";
+
+import { CartContext } from "./context/CartContext";
+import { useContext } from "react";
 
 import "./App.css";
 
 function App() {
+  const { isCartOpen } = useContext(CartContext);
   return (
     <Fragment>
+      {isCartOpen ? <CartModal /> : null}
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Homepage />} />

@@ -18,7 +18,6 @@ export const StockContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-left: 30px;
   font-size: 3rem;
   @media (max-width: 768px) {
     padding-left: 0px;
@@ -28,7 +27,8 @@ export const StockContainer = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 40%;
+  width: 35%;
+  height: fit-content;
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -39,6 +39,7 @@ export const ProductStockPrice = styled.div`
   justify-content: space-between;
   @media (max-width: 768px) {
     flex-direction: column;
+    margin-top: 1rem;
   }
 `;
 
@@ -53,11 +54,11 @@ export const ProductInfo = styled.div`
 
 export const ProductPageWrapper = styled.div`
   background: #282c34;
-  min-width: 100vh;
+  min-height: 100vh;
   padding-top: 150px;
   width: 100%;
   @media (max-width: 768px) {
-    padding-top: 70px;
+    padding-top: 100px;
   }
 `;
 

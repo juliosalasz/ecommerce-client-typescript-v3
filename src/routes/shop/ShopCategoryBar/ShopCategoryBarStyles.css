@@ -55,6 +55,9 @@
   text-decoration: underline;
   color: white;
 }
+.BarListStyle {
+  text-decoration: none;
+}
 
 @media screen and (min-width: 426px) {
   .categoryTitle {
@@ -80,9 +83,15 @@
     padding: 0;
     display: block;
   }
+  .BarListStyle {
+    text-decoration: none;
+  }
 
   .categoryBarList li h2 {
     color: #f6f6f6;
     text-align: unset;
+  }
+  .categoryListEntry h2 {
+    font-size: 1.3rem;
   }
 }

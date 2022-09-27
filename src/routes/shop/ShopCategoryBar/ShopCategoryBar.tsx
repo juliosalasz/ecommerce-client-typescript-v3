@@ -15,7 +15,7 @@ const ShopCategoryBar = (products: Products) => {
         {productCategory?.map((category) => {
           return (
             <li key={category.id}>
-              <Link to={`/shop/${category.Category}`}>
+              <Link className="BarListStyle" to={`/shop/${category.Category}`}>
                 <div className="categoryListEntry">
                   <h2>{category.Category}</h2>
                 </div>

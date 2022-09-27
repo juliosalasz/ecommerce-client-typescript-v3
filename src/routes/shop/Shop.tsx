@@ -1,20 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ProductContext } from "../../context/ProductContext";
 
 import ShopCategoryBar from "./ShopCategoryBar/ShopCategoryBar";
 import ShopCategoryDisplay from "./ShopCategoryDisplay/ShopCategoryDisplay";
 
-import { Category } from "../../types/ProductTypes";
-
 import "./ShopStyles.css";
 
 const Shop = () => {
-  const [products, setProducts] = useState<Category[]>();
-  useEffect(() => {
-    fetch("https://tech-ecommerce-server.herokuapp.com/products/getProducts")
-      .then((response: Response) => response.json())
-      .then((res: Category[]) => setProducts(res))
-      .catch((err: Error) => console.log(err));
-  }, []);
+  const { products } = useContext(ProductContext);
 
   return (
     <section className="ShopContainer" id="CategorySection">
