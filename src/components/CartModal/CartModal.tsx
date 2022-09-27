@@ -32,20 +32,20 @@ const CartModal = () => {
             <animated.div style={props} className="cartModalContainer">
               <div className="cartTitle">
                 <h1>MY CART</h1>
-                <ul className="cartItems">
-                  {cartItems.length === 0 ? (
-                    <li>
-                      <p>No Cart Items yet</p>
-                    </li>
-                  ) : (
-                    cartItems.map((item) => (
-                      <li key={item.sku}>
-                        <CartItem {...item} />
-                      </li>
-                    ))
-                  )}
-                </ul>
               </div>
+              <ul className="cartItems">
+                {cartItems.length === 0 ? (
+                  <li>
+                    <p>No Cart Items yet</p>
+                  </li>
+                ) : (
+                  cartItems.map((item) => (
+                    <li key={item.sku}>
+                      <CartItem {...item} />
+                    </li>
+                  ))
+                )}
+              </ul>
               <div className="cartBtn">
                 <Button buttonType="cartDisplay" onClick={closeCart}>
                   Close Cart

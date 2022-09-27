@@ -17,9 +17,10 @@ const addCartItem = (
   productToAdd: ProductToBeAdded
 ) => {
   //check if object has the same sku
-  const itemSkuCheck = cartItems.filter(
+  const itemSkuCheck = cartItems.find(
     (product) => product.sku === productToAdd.sku
   );
+
   if (itemSkuCheck) {
     return cartItems.map((product) =>
       product.sku === productToAdd.sku
@@ -27,7 +28,7 @@ const addCartItem = (
         : product
     );
   }
-  return [...cartItems, { ...productToAdd, quantity: 1 }];
+  return [...cartItems, { ...productToAdd }];
 };
 
 export const CartContext = createContext<CartContextType>({

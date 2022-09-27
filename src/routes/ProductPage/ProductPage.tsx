@@ -114,6 +114,7 @@ const ProductPage = () => {
               buttonType={`${
                 screenType.isDesktop ? "cartButton" : "cartDisplay"
               }`}
+              onClick={addProductToCart}
             >
               Add to Cart
             </Button>
@@ -122,7 +123,6 @@ const ProductPage = () => {
               buttonType={`${
                 !screenType.isMobile ? "disabled" : "disabledCart"
               }`}
-              onClick={addProductToCart}
             >
               Add to cart
             </Button>
