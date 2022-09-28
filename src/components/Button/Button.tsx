@@ -12,14 +12,14 @@ type ButtonProps = {
   type?: "submit" | "reset" | "button";
   className?: string;
 };
-const BUTTON_TYPE_CLASSES = {
-  google: "googlebtn",
-  signUpLink: "btnChange",
-  cartButton: "cartButton",
-  cartDisplay: "cartDisplay",
-  disabled: "disabled",
-  disabledCart: "disabledCart",
-};
+// const BUTTON_TYPE_CLASSES = {
+//   google: "googlebtn",
+//   signUpLink: "btnChange",
+//   cartButton: "cartButton",
+//   cartDisplay: "cartDisplay",
+//   disabled: "disabled",
+//   disabledCart: "disabledCart",
+// };
 
 //function will use buttonType as the data for choosing with type of button you want
 const Button: FC<ButtonProps> = ({

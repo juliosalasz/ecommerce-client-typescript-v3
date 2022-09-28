@@ -11,14 +11,12 @@ import CartCheckout from "./routes/CartCheckout/CartCheckout";
 import ErrorPage from "./routes/ErrorPage/ErrorPage";
 
 import { CartContext } from "./context/CartContext";
-import { UserContext } from "./context/userContext";
 import { useContext } from "react";
 
 import "./App.css";
 
 function App() {
   const { isCartOpen } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
   return (
     <Fragment>
       {isCartOpen ? <CartModal /> : null}
