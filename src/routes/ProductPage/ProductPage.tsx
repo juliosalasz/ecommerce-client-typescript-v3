@@ -39,7 +39,7 @@ const ProductPage = () => {
   const productObject = categoryPath?.[0].PRODUCTS.filter(
     (product) => product.id === Number(categoryName[3])
   );
-  const propObject = productObject?.[0];
+  const propObject = productObject[0];
 
   //get price of product
   const [price, setPrice] = useState<number | undefined>(
@@ -58,7 +58,7 @@ const ProductPage = () => {
       sku: propObject?.skus[skuState].sku,
       name: propObject?.name,
       imageUrl: propObject?.imageUrl,
-      price: propObject?.skus[skuState].price,
+      price: propObject.skus[skuState].price,
       feature: propObject?.skus[skuState].feature,
       quantity: 1,
     };

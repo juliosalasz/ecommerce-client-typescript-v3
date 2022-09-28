@@ -1,4 +1,5 @@
 import { useTransition, animated } from "react-spring";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button/Button";
 
 import { CartContext } from "../../context/CartContext";
@@ -9,7 +10,8 @@ import CartItem from "../CartItem/CartItem";
 import "./CartModalStyles.css";
 
 const CartModal = () => {
-  const { isCartOpen, setIsCartOpen, cartItems } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartItems, cartCount } =
+    useContext(CartContext);
 
   const transitions = useTransition(isCartOpen, {
     expires: 0,
@@ -23,6 +25,14 @@ const CartModal = () => {
   const closeCart = () => {
     setIsCartOpen(!isCartOpen);
   };
+
+  //Go to checkout button
+  const navigate = useNavigate();
+  const goToCheckout = () => {
+    navigate("/checkout");
+    setIsCartOpen(!isCartOpen);
+  };
+
   return (
     <div className="cartModalWrapper">
       <div className="cartBackDrop" onClick={closeCart}></div>
@@ -46,7 +56,15 @@ const CartModal = () => {
                   ))
                 )}
               </ul>
+
               <div className="cartBtn">
+                {cartCount === 0 ? (
+                  <Button buttonType="disabledCart">Go to Checkout</Button>
+                ) : (
+                  <Button buttonType="cartDisplay" onClick={goToCheckout}>
+                    Go to Checkout
+                  </Button>
+                )}
                 <Button buttonType="cartDisplay" onClick={closeCart}>
                   Close Cart
                 </Button>

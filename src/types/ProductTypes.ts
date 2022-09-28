@@ -26,7 +26,7 @@ export type ProductToBeAdded = {
   sku: string | undefined;
   name: string | undefined;
   imageUrl: string | undefined;
-  price: Number | undefined;
+  price: number;
   feature: string | undefined;
   quantity: number;
 };

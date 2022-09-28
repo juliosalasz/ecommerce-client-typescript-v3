@@ -3,7 +3,7 @@ import { createContext, useState, FC, useEffect } from "react";
 import { Category } from "../types/ProductTypes";
 
 export type ProductContextType = {
-  products: Category[] | undefined;
+  products: Category[];
 };
 
 type ProviderProps = {
@@ -15,7 +15,7 @@ export const ProductContext = createContext<ProductContextType>({
 });
 
 export const ProductsProvider: FC<ProviderProps> = ({ children }) => {
-  const [products, setProducts] = useState<Category[]>();
+  const [products, setProducts] = useState<Category[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       const dataFetch = await fetch(

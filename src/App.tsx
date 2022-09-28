@@ -7,15 +7,18 @@ import ProductCategory from "./routes/ProductCategory/ProductCategory";
 import ProductPage from "./routes/ProductPage/ProductPage";
 import SignIn from "./routes/SignIn/SignIn";
 import CartModal from "./components/CartModal/CartModal";
+import CartCheckout from "./routes/CartCheckout/CartCheckout";
 import ErrorPage from "./routes/ErrorPage/ErrorPage";
 
 import { CartContext } from "./context/CartContext";
+import { UserContext } from "./context/userContext";
 import { useContext } from "react";
 
 import "./App.css";
 
 function App() {
   const { isCartOpen } = useContext(CartContext);
+  const { currentUser } = useContext(UserContext);
   return (
     <Fragment>
       {isCartOpen ? <CartModal /> : null}
@@ -26,6 +29,7 @@ function App() {
           <Route path="/shop/:id" element={<ProductCategory />} />
           <Route path="/shop/:id/:id" element={<ProductPage />} />
           <Route path="/signin" element={<SignIn />} />
+          <Route path="/checkout" element={<CartCheckout />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
