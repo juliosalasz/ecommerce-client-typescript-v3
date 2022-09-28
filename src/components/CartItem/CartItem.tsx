@@ -11,8 +11,8 @@ const CartItem = (cartItem: ProductToBeAdded) => {
       <img src={`${ServerUrl}${imageUrl}`} alt={name} />
       <div className="cartItemDetails">
         <h2>{name?.toUpperCase()}</h2>
-        <span>Details: {feature}</span>
-        <span>Quantity: {quantity}</span>
+        <span className="cartDetails">Details: {feature}</span>
+        <span className="cartQuantity">Quantity: {quantity}</span>
       </div>
     </div>
   );
