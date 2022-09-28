@@ -10,7 +10,7 @@ export const FeaturedList = [
   {
     id: "456",
     name: "GEFORCE GTX 1080",
-    imageUrl: `${ServerUrl}images/graphic-Card.jpg`,
+    imageUrl: `${ServerUrl}images/graphicCard.jpg`,
     price: "$300",
     route: "shop/VIDEOGAMES/951055",
   },
