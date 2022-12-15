@@ -19,7 +19,7 @@ export const ProductsProvider: FC<ProviderProps> = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       const dataFetch = await fetch(
-        "https://tech-ecommerce-server.herokuapp.com/products/getProducts"
+        "https://web-production-c3e2.up.railway.app/products/getProducts"
       )
         .then((response: Response) => response.json())
         .then((res: Category[]) => setProducts(res))
