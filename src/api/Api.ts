@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 //Url
-export const ServerUrl = "https://tech-ecommerce-server.herokuapp.com/";
+export const ServerUrl = "https://web-production-c3e2.up.railway.app/";
 
 //Users
 
