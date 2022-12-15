@@ -44,7 +44,7 @@ export const createUserFromAuth = async (user: IUser) => {
 export const getProducts = async () => {
   try {
     const productServer = await Axios.get(
-      "https://tech-ecommerce-server.herokuapp.com/products/getProducts"
+      "https://web-production-c3e2.up.railway.app/products/getProducts"
     ).then((res) => res.data);
     return productServer;
   } catch (err) {
