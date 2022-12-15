@@ -70,7 +70,7 @@ const ProductPage = () => {
     <ProductPageWrapper>
       <ProductPageContainer>
         <ProductImage
-          src={`https://tech-ecommerce-server.herokuapp.com/${propObject?.imageUrl}`}
+          src={`https://web-production-c3e2.up.railway.app/${propObject?.imageUrl}`}
           alt={propObject?.name}
           className="productImage"
         />
